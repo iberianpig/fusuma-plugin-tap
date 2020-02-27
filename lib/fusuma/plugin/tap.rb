@@ -1,3 +1,5 @@
-require "fusuma/plugin/tap/version"
-require "fusuma/plugin/vectors/tap_vector"
-require "fusuma/plugin/parsers/tap_parser"
+# frozen_string_literal: true
+
+require_relative './tap/version'
+require_relative './detectors/tap_detector.rb'
+require_relative './parsers/tap_parser.rb'
