@@ -10,38 +10,124 @@ module Fusuma
       class TapParser < Parser
         DEFAULT_SOURCE = 'libinput_command_input'
 
+        # TAP_STATE_IDLE = 4,
+        #   TAP_STATE_TOUCH,
+        #   TAP_STATE_HOLD,
+        #   TAP_STATE_TAPPED,
+        #   TAP_STATE_TOUCH_2,
+        #   TAP_STATE_TOUCH_2_HOLD,
+        #   TAP_STATE_TOUCH_2_RELEASE,
+        #   TAP_STATE_TOUCH_3,
+        #   TAP_STATE_TOUCH_3_HOLD,
+        #   TAP_STATE_DRAGGING_OR_DOUBLETAP,
+        #   TAP_STATE_DRAGGING_OR_TAP,
+        #   TAP_STATE_DRAGGING,
+        #   TAP_STATE_DRAGGING_WAIT,
+        #   TAP_STATE_DRAGGING_2,
+        #   TAP_STATE_DEAD
+        STATE = {
+          idle: 'TAP_STATE_IDLE',
+          holds: %w[
+            TAP_STATE_TOUCH_3_HOLD
+            TAP_STATE_TOUCH_2_HOLD
+            TAP_STATE_HOLD
+          ],
+          touches: %w[
+            TAP_STATE_TOUCH_3
+            TAP_STATE_TOUCH_2
+            TAP_STATE_TOUCH
+          ],
+          releases: %w[
+            TAP_STATE_TOUCH_2_RELEASE
+            TAP_STATE_TOUCH_2_HOLD
+            TAP_STATE_TAPPED
+            TAP_STATE_HOLD
+          ]
+        }.freeze
+
         # @param record [String]
         # @return [Records::Gesture, nil]
         def parse_record(record)
+          gesture = 'tap'
+
+          # MultiLogger.info(record.to_s)
           case record.to_s
-          when /POINTER_BUTTON.+(\d+\.\d+)s.*BTN_(LEFT|RIGHT|MIDDLE).*(pressed|released)/
-            matched = Regexp.last_match
-            # time = matched[1]
-            gesture = 'tap'
-            finger = case matched[2]
-                     when 'LEFT'
-                       1
-                     when 'RIGHT'
-                       2
-                     when 'MIDDLE'
+            # BEGIN
+          when /\stap state:\s.*TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH/
+            status = 'begin'
+            finger = 1
+
+            # TOUCH
+          when /\stap state:\s.*(#{STATE[:touches].join('|')}) → TAP_EVENT_TOUCH → (#{STATE[:touches].join('|')})/
+
+            status = 'touch'
+
+            finger = case Regexp.last_match(2)
+                     when 'TAP_STATE_TOUCH_3'
                        3
+                     when 'TAP_STATE_TOUCH_2'
+                       2
+                     when 'TAP_STATE_TOUCH'
+                       1
                      end
-            status = matched[3]
+
+          # HOLD
+          when /\stap state:\s.*(#{STATE[:touches].join('|')}) → TAP_EVENT_TIMEOUT → (#{STATE[:holds].join('|')})/
+
+            status = 'hold'
+
+            matched = Regexp.last_match
+
+            finger = case matched[2]
+                     when 'TAP_STATE_TOUCH_3_HOLD'
+                       3
+                     when 'TAP_STATE_TOUCH_2_HOLD'
+                       2
+                     when 'TAP_STATE_HOLD'
+                       1
+                     end
+
+            # RELEASE
+          when /\stap state:\s.*(#{(STATE[:touches] | STATE[:holds]).join('|')}) → TAP_EVENT_RELEASE → (#{STATE[:releases].join('|')})/
+
+            status = 'release'
+            matched = Regexp.last_match
+
+            finger = case matched[1]
+                     when 'TAP_STATE_TOUCH_3', 'TAP_STATE_TOUCH_3_HOLD'
+                       3
+                     when 'TAP_STATE_TOUCH_2', 'TAP_STATE_TOUCH_2_HOLD'
+                       2
+                     when 'TAP_STATE_TOUCH', 'TAP_STATE_HOLD'
+                       1
+                     end
+
+          when /\stap state:\s.*(#{STATE[:releases].join('|')}) → TAP_EVENT_(.*) → #{STATE[:idle]}/
+            status = 'end'
+
+            matched = Regexp.last_match
+            finger = case matched[1]
+                     when 'TAP_STATE_TOUCH_3', 'TAP_STATE_TOUCH_3_HOLD'
+                       3
+                     when 'TAP_STATE_TOUCH_2', 'TAP_STATE_TOUCH_2_HOLD', 'TAP_STATE_TOUCH_2_RELEASE'
+                       2
+                     when 'TAP_STATE_TOUCH', 'TAP_STATE_HOLD', 'TAP_STATE_TAPPED'
+                       1
+                     end
+
           else
             return
           end
 
-          direction = Events::Records::GestureRecord::Delta.new(0, 0,
-                                                                0, 0)
-
+          # MultiLogger.info(status: status, gesture: gesture, finger: finger)
           Events::Records::GestureRecord.new(status: status,
                                              gesture: gesture,
                                              finger: finger,
-                                             direction: direction)
+                                             direction: nil)
         end
 
         def tag
-          'libinput_gesture_parser'
+          'libinput_tap_parser'
         end
       end
     end

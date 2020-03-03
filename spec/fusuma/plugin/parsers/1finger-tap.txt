@@ -1,0 +1,5 @@
+event17 - tap state: TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH
+event17 - tap state: TAP_STATE_TOUCH → TAP_EVENT_RELEASE → TAP_STATE_TAPPED
+ event17  POINTER_BUTTON    +2.49s      BTN_LEFT (272) pressed, seat count: 1
+event17 - tap state: TAP_STATE_TAPPED → TAP_EVENT_TIMEOUT → TAP_STATE_IDLE
+ event17  POINTER_BUTTON    +2.55s      BTN_LEFT (272) released, seat count: 0
