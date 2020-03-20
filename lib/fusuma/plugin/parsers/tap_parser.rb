@@ -31,17 +31,20 @@ module Fusuma
             TAP_STATE_TOUCH_3_HOLD
             TAP_STATE_TOUCH_2_HOLD
             TAP_STATE_HOLD
+            TAP_STATE_DEAD
           ],
           touches: %w[
             TAP_STATE_TOUCH_3
             TAP_STATE_TOUCH_2
             TAP_STATE_TOUCH
+            TAP_STATE_DEAD
           ],
           releases: %w[
             TAP_STATE_TOUCH_2_RELEASE
             TAP_STATE_TOUCH_2_HOLD
             TAP_STATE_TAPPED
             TAP_STATE_HOLD
+            TAP_STATE_DEAD
           ]
         }.freeze
 
@@ -50,7 +53,6 @@ module Fusuma
         def parse_record(record)
           gesture = 'tap'
 
-          # MultiLogger.info(record.to_s)
           case record.to_s
             # BEGIN
           when /\stap state:\s.*TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH/
@@ -63,6 +65,8 @@ module Fusuma
             status = 'touch'
 
             finger = case Regexp.last_match(2)
+                     when 'TAP_STATE_DEAD'
+                       4
                      when 'TAP_STATE_TOUCH_3'
                        3
                      when 'TAP_STATE_TOUCH_2'
@@ -79,6 +83,8 @@ module Fusuma
             matched = Regexp.last_match
 
             finger = case matched[2]
+                     when 'TAP_STATE_DEAD'
+                       4
                      when 'TAP_STATE_TOUCH_3_HOLD'
                        3
                      when 'TAP_STATE_TOUCH_2_HOLD'
@@ -86,14 +92,21 @@ module Fusuma
                      when 'TAP_STATE_HOLD'
                        1
                      end
+          # KEEP
+          when /\sgesture state:\s/
+            # NOTE: treat the "gesture state:" as KEEP
+            status = 'keep'
+            finger = 0
 
-            # RELEASE
+          # RELEASE
           when /\stap state:\s.*(#{(STATE[:touches] | STATE[:holds]).join('|')}) → TAP_EVENT_RELEASE → (#{STATE[:releases].join('|')})/
 
             status = 'release'
             matched = Regexp.last_match
 
             finger = case matched[1]
+                     when 'TAP_STATE_DEAD'
+                       4
                      when 'TAP_STATE_TOUCH_3', 'TAP_STATE_TOUCH_3_HOLD'
                        3
                      when 'TAP_STATE_TOUCH_2', 'TAP_STATE_TOUCH_2_HOLD'
@@ -102,6 +115,7 @@ module Fusuma
                        1
                      end
 
+          # END
           when /\stap state:\s.*(#{STATE[:releases].join('|')}) → TAP_EVENT_(.*) → #{STATE[:idle]}/
             status = 'end'
 
@@ -114,12 +128,10 @@ module Fusuma
                      when 'TAP_STATE_TOUCH', 'TAP_STATE_HOLD', 'TAP_STATE_TAPPED'
                        1
                      end
-
           else
             return
           end
 
-          # MultiLogger.info(status: status, gesture: gesture, finger: finger)
           Events::Records::GestureRecord.new(status: status,
                                              gesture: gesture,
                                              finger: finger,

@@ -10,8 +10,9 @@ module Fusuma
         BUFFER_TYPE = 'tap'
         GESTURE_RECORD_TYPE = 'tap'
 
-        FINGERS = [1, 2, 3].freeze
         BASE_INTERVAL = 0.5
+        BASE_HOLDING_TIME = 0.1
+        BASE_TAP_TIME = 1
 
         # @param buffers [Array<Buffer>]
         # @return [Event] if event is detected
@@ -23,20 +24,12 @@ module Fusuma
 
           finger = buffer.finger
 
-          direction = if buffer.events.any? { |e| e.record.status == 'hold' }
+          holding_time = buffer.events.last.time - buffer.events.first.time
+
+          direction = if hold?(buffer, holding_time)
                         'hold'
-                      else
-                        touch_num = buffer.events.count { |e| (e.record.status == 'begin') || (e.record.status == 'touch') }
-                        release_num = buffer.events.count { |e| e.record.status == 'release' }
-                        MultiLogger.info(touch_num: touch_num, release_num: release_num)
-                        case finger
-                        when 1
-                          'tap' if touch_num == release_num
-                        when 2
-                          'tap' if touch_num == release_num + 1
-                        when 3
-                          'tap' if touch_num == release_num + 1
-                        end
+                      elsif tap?(buffer, holding_time)
+                        'tap'
                       end
 
           return if direction.nil?
@@ -60,10 +53,40 @@ module Fusuma
           )
         end
 
+        def hold?(buffer, holding_time)
+          return false if holding_time < 1
+
+          true if buffer.finger == 4 || buffer.events.any? { |e| e.record.status == 'hold' }
+        end
+
+        def tap?(buffer, holding_time)
+          return false if holding_time > 0.15
+
+          tap_released?(buffer)
+        end
+
+        def tap_released?(buffer)
+          touch_num = buffer.events.count { |e| (e.record.status =~ /begin|touch/) }
+          release_num = buffer.events.count { |e| e.record.status == 'release' }
+          MultiLogger.debug(touch_num: touch_num, release_num: release_num)
+
+          case buffer.finger
+          when 1
+            touch_num == release_num
+          when 2
+            touch_num == release_num + 1
+          when 3
+            touch_num == release_num + 1
+          when 4
+            touch_num == release_num + 1
+          else
+            false
+          end
+        end
+
         private
 
         def enough?(index:, direction:)
-          MultiLogger.debug(self)
           enough_interval?(index: index, direction: direction)
         end
 

@@ -1,28 +1,66 @@
-# Fusuma::Plugin::Tap
+# Fusuma::Plugin::Tap [![Gem Version](https://badge.fury.io/rb/fusuma-plugin-tap.svg)](https://badge.fury.io/rb/fusuma-plugin-tap) [![Build Status](https://travis-ci.com/iberianpig/fusuma-plugin-tap.svg?branch=master)](https://travis-ci.com/iberianpig/fusuma-plugin-tap)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fusuma/plugin/tap`. To experiment with that code, run `bin/console` for an interactive prompt.
+Tap gestures plugin for [Fusuma](https://github.com/iberianpig/fusuma)
 
-TODO: Delete this and the text above, and describe your gem
+* Add Tap gestures with 1, 2, 3, 4 fingers
+* Add Hold gestures with 1, 2, 3, 4 fingers
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Run the following code in your terminal.
 
-```ruby
-gem 'fusuma-plugin-tap'
+### Install fusuma-plugin-tap
+
+```sh
+$ sudo gem install fusuma-plugin-tap
 ```
 
-And then execute:
+### Add verbose and enable-tap
 
-    $ bundle
+NOTE: **Fusuma require "Tap to click" and "verbose" option to libinput**
 
-Or install it yourself as:
+Open `~/.config/fusuma/config.yml` and add the following code at the bottom.
+If you already have `libinput_command_input` section, just add `enable-tap` and `verbose: true`.
 
-    $ gem install fusuma-plugin-tap
+```yaml
+plugin: 
+  inputs:
+    libinput_command_input:
+      enable-tap: true
+      verbose: true
+```
 
-## Usage
+### Add tap and hold parameter
 
-TODO: Write usage instructions here
+Set `tap:` and `:hold` property and values under gesture in `~/.config/fusuma/config.yml`.
+
+```yaml
+tap:
+  1:
+    command: "echo ----------------tap1----------------------------"
+  2:
+    command: "echo ----------------tap2----------------------------"
+  3:
+    command: "echo ----------------tap3----------------------------"
+  4:
+    command: "echo ----------------tap4----------------------------"
+
+hold:
+  1:
+    command: "echo ----------------hold1----------------------------"
+  2:
+    command: "echo ----------------hold2----------------------------"
+  3:
+    command: "echo ----------------hold3----------------------------"
+  4:
+    command: "echo ----------------hold4----------------------------"
+
+plugin: 
+  inputs:
+    libinput_command_input:
+      enable-tap: true
+      verbose: true
+```
 
 ## Development
 

@@ -15,14 +15,15 @@ module Fusuma
         end
 
         # @param event [Event]
+        # @return [NilClass, TapBuffer]
         def buffer(event)
           return if event&.tag != source
 
-          MultiLogger.info(event.record.status)
           # NOTE: need to set `begin` event at first of buffer
           clear && return unless bufferable?(event)
 
           @events.push(event)
+          self
         end
 
         # return [Integer]
