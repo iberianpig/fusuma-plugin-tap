@@ -1,0 +1,190 @@
+# EVEMU 1.3
+# Kernel: 5.3.0-46-generic
+# DMI: dmi:bvnDellInc.:bvr2.13.0:bd11/14/2019:svnDellInc.:pnXPS139360:pvr:rvnDellInc.:rn0115N5:rvrA00:cvnDellInc.:ct9:cvr:
+# Input device name: "DLL075B:01 06CB:76AF Touchpad"
+# Input device ID: bus 0x18 vendor 0x6cb product 0x76af version 0x100
+# Size in mm: 101x56
+# Supported events:
+#   Event type 0 (EV_SYN)
+#     Event code 0 (SYN_REPORT)
+#     Event code 1 (SYN_CONFIG)
+#     Event code 2 (SYN_MT_REPORT)
+#     Event code 3 (SYN_DROPPED)
+#     Event code 4 ((null))
+#     Event code 5 ((null))
+#     Event code 6 ((null))
+#     Event code 7 ((null))
+#     Event code 8 ((null))
+#     Event code 9 ((null))
+#     Event code 10 ((null))
+#     Event code 11 ((null))
+#     Event code 12 ((null))
+#     Event code 13 ((null))
+#     Event code 14 ((null))
+#     Event code 15 (SYN_MAX)
+#   Event type 1 (EV_KEY)
+#     Event code 272 (BTN_LEFT)
+#     Event code 325 (BTN_TOOL_FINGER)
+#     Event code 328 (BTN_TOOL_QUINTTAP)
+#     Event code 330 (BTN_TOUCH)
+#     Event code 333 (BTN_TOOL_DOUBLETAP)
+#     Event code 334 (BTN_TOOL_TRIPLETAP)
+#     Event code 335 (BTN_TOOL_QUADTAP)
+#   Event type 3 (EV_ABS)
+#     Event code 0 (ABS_X)
+#       Value      503
+#       Min          0
+#       Max       1216
+#       Fuzz         0
+#       Flat         0
+#       Resolution  12
+#     Event code 1 (ABS_Y)
+#       Value      280
+#       Min          0
+#       Max        680
+#       Fuzz         0
+#       Flat         0
+#       Resolution  12
+#     Event code 47 (ABS_MT_SLOT)
+#       Value        0
+#       Min          0
+#       Max          4
+#       Fuzz         0
+#       Flat         0
+#       Resolution   0
+#     Event code 53 (ABS_MT_POSITION_X)
+#       Value        0
+#       Min          0
+#       Max       1216
+#       Fuzz         0
+#       Flat         0
+#       Resolution  12
+#     Event code 54 (ABS_MT_POSITION_Y)
+#       Value        0
+#       Min          0
+#       Max        680
+#       Fuzz         0
+#       Flat         0
+#       Resolution  12
+#     Event code 55 (ABS_MT_TOOL_TYPE)
+#       Value        0
+#       Min          0
+#       Max          2
+#       Fuzz         0
+#       Flat         0
+#       Resolution   0
+#     Event code 57 (ABS_MT_TRACKING_ID)
+#       Value        0
+#       Min          0
+#       Max      65535
+#       Fuzz         0
+#       Flat         0
+#       Resolution   0
+#   Event type 4 (EV_MSC)
+#     Event code 5 (MSC_TIMESTAMP)
+# Properties:
+#   Property  type 0 (INPUT_PROP_POINTER)
+#   Property  type 2 (INPUT_PROP_BUTTONPAD)
+N: DLL075B:01 06CB:76AF Touchpad
+I: 0018 06cb 76af 0100
+P: 05 00 00 00 00 00 00 00
+B: 00 0b 00 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 01 00 00 01 00 00 00 00 00
+B: 01 20 e5 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 01 00 00 00 00 00 00 00 00
+B: 02 00 00 00 00 00 00 00 00
+B: 03 03 00 00 00 00 80 e0 02
+B: 04 20 00 00 00 00 00 00 00
+B: 05 00 00 00 00 00 00 00 00
+B: 11 00 00 00 00 00 00 00 00
+B: 12 00 00 00 00 00 00 00 00
+B: 14 00 00 00 00 00 00 00 00
+B: 15 00 00 00 00 00 00 00 00
+B: 15 00 00 00 00 00 00 00 00
+A: 00 0 1216 0 0 12
+A: 01 0 680 0 0 12
+A: 2f 0 4 0 0 0
+A: 35 0 1216 0 0 12
+A: 36 0 680 0 0 12
+A: 37 0 2 0 0 0
+A: 39 0 65535 0 0 0
+################################
+#      Waiting for events      #
+################################
+E: 0.000001 0003 0039 18293	# EV_ABS / ABS_MT_TRACKING_ID   18293
+E: 0.000001 0003 0035 0580	# EV_ABS / ABS_MT_POSITION_X    580
+E: 0.000001 0003 0036 0288	# EV_ABS / ABS_MT_POSITION_Y    288
+E: 0.000001 0001 014a 0001	# EV_KEY / BTN_TOUCH            1
+E: 0.000001 0001 0145 0001	# EV_KEY / BTN_TOOL_FINGER      1
+E: 0.000001 0003 0000 0580	# EV_ABS / ABS_X                580
+E: 0.000001 0003 0001 0288	# EV_ABS / ABS_Y                288
+E: 0.000001 0004 0005 0000	# EV_MSC / MSC_TIMESTAMP        0
+E: 0.000001 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +0ms
+E: 0.006631 0004 0005 7200	# EV_MSC / MSC_TIMESTAMP        7200
+E: 0.006631 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +6ms
+E: 0.013914 0004 0005 14400	# EV_MSC / MSC_TIMESTAMP        14400
+E: 0.013914 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.020799 0004 0005 21500	# EV_MSC / MSC_TIMESTAMP        21500
+E: 0.020799 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.027903 0004 0005 28600	# EV_MSC / MSC_TIMESTAMP        28600
+E: 0.027903 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.035026 0004 0005 35700	# EV_MSC / MSC_TIMESTAMP        35700
+E: 0.035026 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +8ms
+E: 0.042073 0004 0005 42800	# EV_MSC / MSC_TIMESTAMP        42800
+E: 0.042073 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.049147 0004 0005 49900	# EV_MSC / MSC_TIMESTAMP        49900
+E: 0.049147 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.055403 0003 0039 -001	# EV_ABS / ABS_MT_TRACKING_ID   -1
+E: 0.055403 0001 014a 0000	# EV_KEY / BTN_TOUCH            0
+E: 0.055403 0001 0145 0000	# EV_KEY / BTN_TOOL_FINGER      0
+E: 0.055403 0004 0005 57000	# EV_MSC / MSC_TIMESTAMP        57000
+E: 0.055403 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +6ms
+E: 0.162686 0003 0039 18294	# EV_ABS / ABS_MT_TRACKING_ID   18294
+E: 0.162686 0003 0035 0588	# EV_ABS / ABS_MT_POSITION_X    588
+E: 0.162686 0003 0036 0286	# EV_ABS / ABS_MT_POSITION_Y    286
+E: 0.162686 0001 014a 0001	# EV_KEY / BTN_TOUCH            1
+E: 0.162686 0001 0145 0001	# EV_KEY / BTN_TOOL_FINGER      1
+E: 0.162686 0003 0000 0588	# EV_ABS / ABS_X                588
+E: 0.162686 0003 0001 0286	# EV_ABS / ABS_Y                286
+E: 0.162686 0004 0005 164100	# EV_MSC / MSC_TIMESTAMP        164100
+E: 0.162686 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +107ms
+E: 0.170090 0004 0005 171200	# EV_MSC / MSC_TIMESTAMP        171200
+E: 0.170090 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +8ms
+E: 0.177147 0003 0035 0587	# EV_ABS / ABS_MT_POSITION_X    587
+E: 0.177147 0003 0000 0587	# EV_ABS / ABS_X                587
+E: 0.177147 0004 0005 178300	# EV_MSC / MSC_TIMESTAMP        178300
+E: 0.177147 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.184284 0003 0035 0586	# EV_ABS / ABS_MT_POSITION_X    586
+E: 0.184284 0003 0000 0586	# EV_ABS / ABS_X                586
+E: 0.184284 0004 0005 185400	# EV_MSC / MSC_TIMESTAMP        185400
+E: 0.184284 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.191356 0003 0035 0585	# EV_ABS / ABS_MT_POSITION_X    585
+E: 0.191356 0003 0036 0285	# EV_ABS / ABS_MT_POSITION_Y    285
+E: 0.191356 0003 0000 0585	# EV_ABS / ABS_X                585
+E: 0.191356 0003 0001 0285	# EV_ABS / ABS_Y                285
+E: 0.191356 0004 0005 192500	# EV_MSC / MSC_TIMESTAMP        192500
+E: 0.191356 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.198442 0003 0035 0584	# EV_ABS / ABS_MT_POSITION_X    584
+E: 0.198442 0003 0036 0284	# EV_ABS / ABS_MT_POSITION_Y    284
+E: 0.198442 0003 0000 0584	# EV_ABS / ABS_X                584
+E: 0.198442 0003 0001 0284	# EV_ABS / ABS_Y                284
+E: 0.198442 0004 0005 199600	# EV_MSC / MSC_TIMESTAMP        199600
+E: 0.198442 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.205486 0003 0036 0283	# EV_ABS / ABS_MT_POSITION_Y    283
+E: 0.205486 0003 0001 0283	# EV_ABS / ABS_Y                283
+E: 0.205486 0004 0005 206700	# EV_MSC / MSC_TIMESTAMP        206700
+E: 0.205486 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +7ms
+E: 0.211766 0003 0039 -001	# EV_ABS / ABS_MT_TRACKING_ID   -1
+E: 0.211766 0001 014a 0000	# EV_KEY / BTN_TOUCH            0
+E: 0.211766 0001 0145 0000	# EV_KEY / BTN_TOOL_FINGER      0
+E: 0.211766 0004 0005 213800	# EV_MSC / MSC_TIMESTAMP        213800
+E: 0.211766 0000 0000 0000	# ------------ SYN_REPORT (0) ---------- +6ms

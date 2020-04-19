@@ -10,11 +10,14 @@ module Fusuma
       RSpec.describe TapParser do
         describe '#parse_record' do
           before do
+            version = ENV.fetch('SPEC_LIBINPUT_VERSION', '1.14.1')
+
+            @log_dir = "spec/fusuma/plugin/parsers/#{version}"
             @parser = TapParser.new
           end
           context 'with 1 finger tap' do
             before do
-              @records = File.readlines('spec/fusuma/plugin/parsers/1finger-tap.txt').map do |line|
+              @records = File.readlines("#{@log_dir}/1finger-tap.txt").map do |line|
                 @parser.parse_record(line)
               end.compact
             end
@@ -26,7 +29,7 @@ module Fusuma
           end
           context 'with 2 finger tap' do
             before do
-              @records = File.readlines('spec/fusuma/plugin/parsers/2finger-tap.txt').map do |line|
+              @records = File.readlines("#{@log_dir}/2finger-tap.txt").map do |line|
                 @parser.parse_record(line)
               end.compact
             end
@@ -39,7 +42,7 @@ module Fusuma
 
           context 'with 3 finger tap' do
             before do
-              @records = File.readlines('spec/fusuma/plugin/parsers/3finger-tap.txt').map do |line|
+              @records = File.readlines("#{@log_dir}/3finger-tap.txt").map do |line|
                 @parser.parse_record(line)
               end.compact
             end
@@ -52,7 +55,7 @@ module Fusuma
 
           context 'with 1 finger hold' do
             before do
-              @records = File.readlines('spec/fusuma/plugin/parsers/1finger-hold.txt').map do |line|
+              @records = File.readlines("#{@log_dir}/1finger-hold.txt").map do |line|
                 @parser.parse_record(line)
               end.compact
             end
@@ -64,7 +67,7 @@ module Fusuma
           end
           context 'with 2 finger hold' do
             before do
-              @records = File.readlines('spec/fusuma/plugin/parsers/2finger-hold.txt').map do |line|
+              @records = File.readlines("#{@log_dir}/2finger-hold.txt").map do |line|
                 @parser.parse_record(line)
               end.compact
             end
@@ -76,7 +79,7 @@ module Fusuma
           end
           context 'with 3 finger hold' do
             before do
-              @records = File.readlines('spec/fusuma/plugin/parsers/3finger-hold.txt').map do |line|
+              @records = File.readlines("#{@log_dir}/3finger-hold.txt").map do |line|
                 @parser.parse_record(line)
               end.compact
             end

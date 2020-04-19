@@ -38,9 +38,9 @@ module Fusuma
 
           index = create_index(finger: finger, direction: direction)
 
-          return create_event(record: Events::Records::IndexRecord.new(index: index)) if enough?(index: index, direction: direction)
+          return unless enough?(index: index, direction: direction)
 
-          nil
+          create_event(record: Events::Records::IndexRecord.new(index: index))
         end
 
         # @return [Config::Index]
@@ -56,7 +56,9 @@ module Fusuma
         def hold?(buffer, holding_time)
           return false if holding_time < 1
 
-          true if buffer.finger == 4 || buffer.events.any? { |e| e.record.status == 'hold' }
+          return true if buffer.finger == 4
+
+          true if buffer.events.any? { |e| e.record.status == 'hold' }
         end
 
         def tap?(buffer, holding_time)

@@ -3,8 +3,24 @@ inherit_from: .rubocop_todo.yml
 Metrics/ModuleLength:
   Exclude:
     - "**/*_spec.rb"
+    - 'lib/fusuma/plugin/parsers/tap_parser.rb'
+    - 'lib/fusuma/plugin/parsers/tap_detector.rb'
 
 Metrics/BlockLength:
   Exclude:
     - "**/*_spec.rb"
     - "fusuma.gemspec"
+    - 'lib/fusuma/plugin/parsers/tap_parser.rb'
+    - 'lib/fusuma/plugin/parsers/tap_detector.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'lib/fusuma/plugin/parsers/tap_parser.rb'
+    - 'lib/fusuma/plugin/parsers/tap_detector.rb'
+
+Layout/LineLength:
+  Max: 100
+  Exclude:
+    - 'spec/**/*'
+    - 'lib/fusuma/plugin/parsers/tap_parser.rb'
+    - 'lib/fusuma/plugin/parsers/tap_detector.rb'
