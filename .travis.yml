@@ -8,6 +8,14 @@ env:
     - SPEC_LIBINPUT_VERSION=1.10.4
     - SPEC_LIBINPUT_VERSION=1.14.1
 
+cache:
+  directories:
+  - vendor/bundle
+
 rvm:
-  - 2.4.1
-before_install: gem install bundler -v 2.0.1
+  - 2.3.1
+  - 2.4
+  - 2.5
+  - 2.6
+
+before_install: gem install bundler --no-document -v 2.0.1
