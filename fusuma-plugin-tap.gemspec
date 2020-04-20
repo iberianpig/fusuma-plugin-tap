@@ -28,7 +28,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'fusuma', '~> 1.5'
 
-  spec.add_development_dependency 'systemu'
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'github_changelog_generator', '~> 1.14'
   spec.add_development_dependency 'pry-byebug'
