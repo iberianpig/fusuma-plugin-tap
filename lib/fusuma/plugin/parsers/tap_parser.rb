@@ -55,12 +55,12 @@ module Fusuma
 
           case record.to_s
             # BEGIN
-          when /\stap(| state):\s.*TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH/
+          when /\stap(?:| state):\s.*TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH/
             status = 'begin'
             finger = 1
 
             # TOUCH
-          when /\stap(| state):\s.*(#{STATE[:touches].join('|')}) → TAP_EVENT_TOUCH → (#{STATE[:touches].join('|')})/
+          when /\stap(?:| state):\s.*(#{STATE[:touches].join('|')}) → TAP_EVENT_TOUCH → (#{STATE[:touches].join('|')})/
 
             status = 'touch'
 
@@ -76,7 +76,7 @@ module Fusuma
                      end
 
           # HOLD
-          when /\stap(| state):\s.*(#{STATE[:touches].join('|')}) → TAP_EVENT_TIMEOUT → (#{STATE[:holds].join('|')})/
+          when /\stap(?:| state):\s.*(#{STATE[:touches].join('|')}) → TAP_EVENT_TIMEOUT → (#{STATE[:holds].join('|')})/
 
             status = 'hold'
 
@@ -99,7 +99,7 @@ module Fusuma
             finger = 0
 
           # RELEASE
-          when /\stap(| state):\s.*(#{(STATE[:touches] | STATE[:holds]).join('|')}) → TAP_EVENT_RELEASE → (#{STATE[:releases].join('|')})/
+          when /\stap(?:| state):\s.*(#{(STATE[:touches] | STATE[:holds]).join('|')}) → TAP_EVENT_RELEASE → (#{STATE[:releases].join('|')})/
 
             status = 'release'
             matched = Regexp.last_match
@@ -116,7 +116,7 @@ module Fusuma
                      end
 
           # END
-          when /\stap(| state):\s.*(#{STATE[:releases].join('|')}) → TAP_EVENT_(.*) → #{STATE[:idle]}/
+          when /\stap(?:| state):\s.*(#{STATE[:releases].join('|')}) → TAP_EVENT_(.*) → #{STATE[:idle]}/
             status = 'end'
 
             matched = Regexp.last_match

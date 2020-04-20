@@ -23,6 +23,7 @@ module Fusuma
             end
             it 'generate tap record' do
               expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).to eq 1
               # expect(@records.map(&:status)).to eq %w[begin release end]
               expect(@records.map(&:status)).to be_include 'begin'
             end
@@ -35,6 +36,7 @@ module Fusuma
             end
             it 'generate tap record' do
               expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).to eq 2
               # expect(@records.map(&:status)).to eq %w[begin touch release end]
               expect(@records.map(&:status)).to be_include 'touch'
             end
@@ -48,6 +50,7 @@ module Fusuma
             end
             it 'generate tap record' do
               expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).to eq 3
               # expect(@records.map(&:status)).to eq %w[begin touch touch release release end]
               expect(@records.map(&:status)).to be_include 'touch'
             end
@@ -61,6 +64,7 @@ module Fusuma
             end
             it 'generate hold record' do
               expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).to eq 1
               # expect(@records.map(&:status)).to eq %w[begin hold end]
               expect(@records.map(&:status)).to be_include 'hold'
             end
@@ -73,6 +77,7 @@ module Fusuma
             end
             it 'generate hold record' do
               expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).to eq 2
               # expect(@records.map(&:status)).to eq %w[begin touch hold release end]
               expect(@records.map(&:status)).to be_include 'hold'
             end
@@ -85,6 +90,7 @@ module Fusuma
             end
             it 'generate hold record' do
               expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).to eq 3
               # expect(@records.map(&:status)).to eq %w[begin touch touch hold release release end]
               expect(@records.map(&:status)).to be_include 'hold'
             end
