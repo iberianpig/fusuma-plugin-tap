@@ -54,13 +54,14 @@ module Fusuma
           gesture = 'tap'
 
           case record.to_s
-            # BEGIN
+
+          # BEGIN
           when /\stap(?:| state):\s.*TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH/
             status = 'begin'
             finger = 1
 
-            # TOUCH
-          when /\stap(?:| state):\s.*(#{STATE[:touches].join('|')}) → TAP_EVENT_TOUCH → (#{STATE[:touches].join('|')})/
+          # TOUCH
+          when /\stap(?:| state):\s.*(#{STATE[:touches].join('|')}) → TAP_EVENT_(?:TOUCH|MOTION) → (#{STATE[:touches].join('|')})/
 
             status = 'touch'
 
@@ -93,7 +94,7 @@ module Fusuma
                        1
                      end
           # KEEP
-          when /\sgesture(| state):\s/
+          when /\sgesture(| state):\s/, 'LIBINPUT TIMEOUT'
             # NOTE: treat the "gesture(| state):" as KEEP
             status = 'keep'
             finger = 0
@@ -121,6 +122,8 @@ module Fusuma
 
             matched = Regexp.last_match
             finger = case matched[1]
+                     when 'TAP_STATE_DEAD'
+                       4
                      when 'TAP_STATE_TOUCH_3', 'TAP_STATE_TOUCH_3_HOLD'
                        3
                      when 'TAP_STATE_TOUCH_2', 'TAP_STATE_TOUCH_2_HOLD', 'TAP_STATE_TOUCH_2_RELEASE'

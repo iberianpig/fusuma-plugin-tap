@@ -5,8 +5,9 @@ cache: bundler
 
 env:
   matrix:
-    - SPEC_LIBINPUT_VERSION=1.10.4
-    - SPEC_LIBINPUT_VERSION=1.14.1
+    - LIBINPUT_VERSION=1.10.4
+    - LIBINPUT_VERSION=1.14.1
+    - LIBINPUT_VERSION=1.15.5
 
 cache:
   directories:
@@ -17,5 +18,6 @@ rvm:
   - 2.4
   - 2.5
   - 2.6
+  - 2.7
 
 before_install: gem install bundler --no-document -v 2.0.1

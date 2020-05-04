@@ -14,6 +14,11 @@ module Fusuma
           }
         end
 
+        # clear old events
+        def clear_expired(*)
+          clear if @events.any? { |e| ended?(e) }
+        end
+
         # @param event [Event]
         # @return [NilClass, TapBuffer]
         def buffer(event)
@@ -38,14 +43,14 @@ module Fusuma
         def bufferable?(event)
           case event.record.status
           when 'end'
-            false
+            true
           when 'begin'
             if empty?
               true
             else
               false
             end
-          else
+          else # 'keep', 'touch', 'hold', 'release'
             if empty?
               false
             else

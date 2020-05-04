@@ -1,0 +1,10 @@
+event12 - button state: touch 2 from BUTTON_STATE_NONE    event BUTTON_EVENT_IN_AREA     to BUTTON_STATE_AREA   
+event12 - tap: touch 2 state TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH
+event12 - button state: touch 1 from BUTTON_STATE_NONE    event BUTTON_EVENT_IN_AREA     to BUTTON_STATE_AREA   
+event12 - tap: touch 1 state TAP_STATE_TOUCH → TAP_EVENT_TOUCH → TAP_STATE_TOUCH_2
+event12 - tap: touch -1 state TAP_STATE_TOUCH_2 → TAP_EVENT_TIMEOUT → TAP_STATE_TOUCH_2_HOLD
+event12 - gesture state: GESTURE_STATE_NONE → GESTURE_STATE_UNKNOWN
+event12 - button state: touch 1 from BUTTON_STATE_AREA    event BUTTON_EVENT_UP          to BUTTON_STATE_NONE   
+event12 - tap: touch 1 state TAP_STATE_TOUCH_2_HOLD → TAP_EVENT_RELEASE → TAP_STATE_HOLD
+event12 - button state: touch 2 from BUTTON_STATE_AREA    event BUTTON_EVENT_UP          to BUTTON_STATE_NONE   
+event12 - tap: touch 2 state TAP_STATE_HOLD → TAP_EVENT_RELEASE → TAP_STATE_IDLE

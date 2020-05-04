@@ -58,7 +58,7 @@ module Fusuma
             end
           end
 
-          context 'with 2 fingers tap events in buffer' do
+          context 'with 3 fingers tap events in buffer' do
             before do
               time = Time.now
               [
@@ -73,6 +73,23 @@ module Fusuma
             it 'should generate tap index' do
               key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:tap, 3]
+            end
+          end
+          context 'with 4 fingers tap events in buffer' do
+            before do
+              time = Time.now
+              [
+                @event_generator.call(time,       1, 'begin'),
+                @event_generator.call(time,       2, 'touch'),
+                @event_generator.call(time,       3, 'touch'),
+                @event_generator.call(time,       4, 'touch'),
+                @event_generator.call(time + 0.1, 4, 'end')
+              ].each { |event| @buffer.buffer(event) }
+            end
+
+            it 'should generate tap index' do
+              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              expect(key_symbol).to eq [:tap, 4]
             end
           end
 
@@ -122,6 +139,26 @@ module Fusuma
             it 'should generate hold index' do
               key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:hold, 3]
+            end
+          end
+          context 'with 4 fingers hold events in buffer' do
+            before do
+              time = Time.now
+              [
+                @event_generator.call(time,     1, 'begin'),
+                @event_generator.call(time,     2, 'touch'),
+                @event_generator.call(time,     3, 'touch'),
+                @event_generator.call(time,     4, 'touch'),
+                @event_generator.call(time,     0, 'keep'),
+                @event_generator.call(time,     0, 'keep'),
+                @event_generator.call(time,     0, 'keep'),
+                @event_generator.call(time + 1, 2, 'release')
+              ].each { |event| @buffer.buffer(event) }
+            end
+
+            it 'should generate hold index' do
+              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              expect(key_symbol).to eq [:hold, 4]
             end
           end
         end

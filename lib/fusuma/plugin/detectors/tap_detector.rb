@@ -69,7 +69,7 @@ module Fusuma
 
         def tap_released?(buffer)
           touch_num = buffer.events.count { |e| (e.record.status =~ /begin|touch/) }
-          release_num = buffer.events.count { |e| e.record.status == 'release' }
+          release_num = buffer.events.count { |e| e.record.status =~ /release|end/ }
           MultiLogger.debug(touch_num: touch_num, release_num: release_num)
 
           case buffer.finger
@@ -80,7 +80,7 @@ module Fusuma
           when 3
             touch_num == release_num + 1
           when 4
-            touch_num == release_num + 1
+            touch_num > 0 && release_num > 0
           else
             false
           end
