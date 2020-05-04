@@ -43,18 +43,37 @@ module Fusuma
         end
 
         describe '#clear_expired' do
-          it 'should NOT clear any events' do
-            time = Time.now
-            event1 = @event_generator.call(time,       1, 'begin')
-            event2 = @event_generator.call(time + 0.1, 2, 'tap')
-            event3 = @event_generator.call(time + 0.2, 1, 'release')
-            @buffer.buffer(event1)
-            @buffer.buffer(event2)
-            @buffer.buffer(event3)
+          context 'with including end' do
+            it 'should NOT clear any events' do
+              time = Time.now
+              event1 = @event_generator.call(time,       1, 'begin')
+              event2 = @event_generator.call(time + 0.1, 2, 'tap')
+              event3 = @event_generator.call(time + 0.2, 1, 'release')
+              event4 = @event_generator.call(time + 0.2, 1, 'end')
+              @buffer.buffer(event1)
+              @buffer.buffer(event2)
+              @buffer.buffer(event3)
+              @buffer.buffer(event4)
 
-            @buffer.clear_expired(current_time: time + 100)
+              @buffer.clear_expired(current_time: time + 100)
 
-            expect(@buffer.events).to eq [event1, event2, event3]
+              expect(@buffer.events).to eq []
+            end
+          end
+          context 'WITHOUT including end' do
+            it 'should NOT clear any events' do
+              time = Time.now
+              event1 = @event_generator.call(time,       1, 'begin')
+              event2 = @event_generator.call(time + 0.1, 2, 'tap')
+              event3 = @event_generator.call(time + 0.2, 1, 'release')
+              @buffer.buffer(event1)
+              @buffer.buffer(event2)
+              @buffer.buffer(event3)
+
+              @buffer.clear_expired(current_time: time + 100)
+
+              expect(@buffer.events).to eq [event1, event2, event3]
+            end
           end
         end
 
@@ -85,9 +104,9 @@ module Fusuma
               expect(@buffer.bufferable?(event2)).to eq true
             end
 
-            it 'should NOT buffer end event' do
+            it 'should buffer end event' do
               event2 = @event_generator.call(Time.now, 1, 'end')
-              expect(@buffer.bufferable?(event2)).to eq false
+              expect(@buffer.bufferable?(event2)).to eq true
             end
           end
         end

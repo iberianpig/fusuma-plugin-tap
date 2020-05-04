@@ -5,8 +5,8 @@ cache: bundler
 
 env:
   matrix:
-    - SPEC_LIBINPUT_VERSION=1.10.4
-    - SPEC_LIBINPUT_VERSION=1.14.1
+    - LIBINPUT_VERSION=1.10.4
+    - LIBINPUT_VERSION=1.14.1
 
 cache:
   directories:

@@ -1,0 +1,7 @@
+event12 - button state: touch 0 from BUTTON_STATE_NONE    event BUTTON_EVENT_IN_AREA     to BUTTON_STATE_AREA   
+event12 - tap: touch 0 state TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH
+event12 - button state: touch 0 from BUTTON_STATE_AREA    event BUTTON_EVENT_UP          to BUTTON_STATE_NONE   
+event12 - tap: touch 0 state TAP_STATE_TOUCH → TAP_EVENT_RELEASE → TAP_STATE_TAPPED
+ event12  POINTER_BUTTON   +0.000s	BTN_LEFT (272) pressed, seat count: 1
+event12 - tap: touch -1 state TAP_STATE_TAPPED → TAP_EVENT_TIMEOUT → TAP_STATE_IDLE
+ event12  POINTER_BUTTON   +0.063s	BTN_LEFT (272) released, seat count: 0
