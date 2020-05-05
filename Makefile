@@ -2,7 +2,7 @@
 
 all: help
 
-build: ## build libinput with SPEC_LIBINPUT_VERSION
+build: ## build libinput with LIBINPUT_VERSION
 	cd $(LIBINPUT_SOURCE_DIR) && \
 		git checkout $(LIBINPUT_VERSION) && \
 		meson --prefix=/usr builddir/ -Dlibwacom=false -Ddebug-gui=false -Dtests=false -Ddocumentation=false --reconfigure && \
