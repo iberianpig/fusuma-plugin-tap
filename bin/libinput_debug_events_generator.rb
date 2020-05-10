@@ -12,6 +12,7 @@ class LibinputDebugEventsGenerator
     @gesture_name = Pathname.new(evemu_record).basename
     @list_devices = ENV.fetch('LIBINPUT_LIST_DEVICES', 'libinput list-devices')
     @debug_events = ENV.fetch('LIBINPUT_DEBUG_EVENTS', 'libinput debug-events')
+    @libinput_version = ENV.fetch('LIBINPUT_VERSION', 'libinput list-devices')
   end
 
   def generate_debug_events
@@ -89,7 +90,9 @@ class LibinputDebugEventsGenerator
   end
 
   def version
-    @version ||= `#{@list_devices} --version`.chomp
+    raise 'Make rebuild libinput' unless @libinput_version == `#{@list_devices} --version`.chomp
+
+    @libinput_version
   end
 end
 

@@ -94,9 +94,14 @@ module Fusuma
                        1
                      end
           # KEEP
-          when /\sgesture(| state):\s/, 'LIBINPUT TIMEOUT'
+          when 'LIBINPUT TIMEOUT'
             # NOTE: treat the "gesture(| state):" as KEEP
             status = 'keep'
+            finger = 0
+
+          # MOVE
+          when /\sPOINTER_AXIS\s/, /\sPOINTER_MOTION\s/, /\sTAP_EVENT_PALM\s/
+            status = 'move'
             finger = 0
 
           # RELEASE
@@ -122,8 +127,8 @@ module Fusuma
 
             matched = Regexp.last_match
             finger = case matched[1]
-                     when 'TAP_STATE_DEAD'
-                       4
+                     when 'TAP_STATE_DEAD' # NOTE: 2 finger hold -> scroll become  TAP_STATE_DEAD
+                       0
                      when 'TAP_STATE_TOUCH_3', 'TAP_STATE_TOUCH_3_HOLD'
                        3
                      when 'TAP_STATE_TOUCH_2', 'TAP_STATE_TOUCH_2_HOLD', 'TAP_STATE_TOUCH_2_RELEASE'

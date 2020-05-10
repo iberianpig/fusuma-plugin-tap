@@ -106,6 +106,22 @@ module Fusuma
               expect(@records.map(&:status)).to be_include 'hold'
             end
           end
+          context 'with 2 finger hold and scroll' do
+            before do
+              @records = File.readlines("#{@debug_log_version_dir}/2finger-hold-invalid.txt").map do |line|
+                @parser.parse_record(line)
+              end.compact
+            end
+            it 'generate hold record' do
+              expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).to eq 2
+              # expect(@records.map(&:status)).to eq %w[begin touch hold release end]
+              expect(@records.map(&:status)).to be_include 'hold'
+            end
+            it 'generate move record' do
+              expect(@records.map(&:status)).to be_include 'move'
+            end
+          end
           context 'with 3 finger hold' do
             before do
               @records = File.readlines("#{@debug_log_version_dir}/3finger-hold.txt").map do |line|
@@ -117,6 +133,22 @@ module Fusuma
               expect(@records.map(&:finger).max).to eq 3
               # expect(@records.map(&:status)).to eq %w[begin touch touch hold release release end]
               expect(@records.map(&:status)).to be_include 'hold'
+            end
+          end
+          context 'with 3 finger hold and scroll' do
+            before do
+              @records = File.readlines("#{@debug_log_version_dir}/3finger-hold-invalid.txt").map do |line|
+                @parser.parse_record(line)
+              end.compact
+            end
+            it 'generate hold record' do
+              expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).to eq 3
+              # expect(@records.map(&:status)).to eq %w[begin touch hold release end]
+              expect(@records.map(&:status)).to be_include 'hold'
+            end
+            it 'generate move record' do
+              expect(@records.map(&:status)).not_to be_include 'move'
             end
           end
           context 'with 4 finger hold' do
@@ -131,7 +163,6 @@ module Fusuma
               # Cannot detect 'HOLD' with 4 finger hold
               # it should be detect by holding time when existing 4 finger tap in buffer
               expect(@records.map(&:status)).not_to be_include 'hold'
-              expect(@records.map(&:status)).to be_include 'keep'
             end
           end
 

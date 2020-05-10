@@ -12,17 +12,16 @@ module Fusuma
 
         BASE_INTERVAL = 0.5
         BASE_HOLDING_TIME = 0.1
-        BASE_TAP_TIME = 1
+        BASE_TAP_TIME = 0.4
 
         # @param buffers [Array<Buffer>]
         # @return [Event] if event is detected
         # @return [NilClass] if event is NOT detected
         def detect(buffers)
           buffer = buffers.find { |b| b.type == BUFFER_TYPE }
+          gesture_buffer = buffers.find { |b| b.type == 'gesture' }
 
-          return if buffer.empty?
-
-          finger = buffer.finger
+          return if buffer.empty? || !gesture_buffer.empty? || moved?(buffer)
 
           holding_time = buffer.events.last.time - buffer.events.first.time
 
@@ -33,6 +32,8 @@ module Fusuma
                       end
 
           return if direction.nil?
+
+          finger = buffer.finger
 
           buffer.clear
 
@@ -53,21 +54,29 @@ module Fusuma
           )
         end
 
+        # @return [TrueClass, FalseClass]
         def hold?(buffer, holding_time)
-          return false if holding_time < 1
+          return false if holding_time < 0.7
 
           return true if buffer.finger == 4
 
           true if buffer.events.any? { |e| e.record.status == 'hold' }
         end
 
+        # @return [TrueClass, FalseClass]
         def tap?(buffer, holding_time)
           return false if holding_time > 0.15
 
-          tap_released?(buffer)
+          released_all?(buffer)
         end
 
-        def tap_released?(buffer)
+        # @return [TrueClass, FalseClass]
+        def moved?(buffer)
+          buffer.events.any? { |e| e.record.status == 'move' }
+        end
+
+        # @return [TrueClass, FalseClass]
+        def released_all?(buffer)
           touch_num = buffer.events.count { |e| (e.record.status =~ /begin|touch/) }
           release_num = buffer.events.count { |e| e.record.status =~ /release|end/ }
           MultiLogger.debug(touch_num: touch_num, release_num: release_num)

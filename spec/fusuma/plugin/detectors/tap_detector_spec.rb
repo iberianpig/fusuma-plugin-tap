@@ -13,6 +13,7 @@ module Fusuma
         before do
           @detector = TapDetector.new
           @buffer = Buffers::TapBuffer.new
+          @buffers = [@buffer, Buffers::GestureBuffer.new]
 
           @event_generator = lambda { |time, finger, status|
             Events::Event.new(
@@ -38,7 +39,7 @@ module Fusuma
             end
 
             it 'should generate tap index' do
-              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              key_symbol = @detector.detect(@buffers).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:tap, 1]
             end
           end
@@ -53,7 +54,7 @@ module Fusuma
             end
 
             it 'should generate tap index' do
-              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              key_symbol = @detector.detect(@buffers).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:tap, 2]
             end
           end
@@ -71,7 +72,7 @@ module Fusuma
             end
 
             it 'should generate tap index' do
-              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              key_symbol = @detector.detect(@buffers).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:tap, 3]
             end
           end
@@ -88,7 +89,7 @@ module Fusuma
             end
 
             it 'should generate tap index' do
-              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              key_symbol = @detector.detect(@buffers).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:tap, 4]
             end
           end
@@ -103,7 +104,7 @@ module Fusuma
             end
 
             it 'should generate tap index' do
-              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              key_symbol = @detector.detect(@buffers).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:hold, 1]
             end
           end
@@ -120,7 +121,7 @@ module Fusuma
             end
 
             it 'should generate tap index' do
-              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              key_symbol = @detector.detect(@buffers).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:hold, 2]
             end
           end
@@ -137,7 +138,7 @@ module Fusuma
             end
 
             it 'should generate hold index' do
-              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              key_symbol = @detector.detect(@buffers).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:hold, 3]
             end
           end
@@ -157,7 +158,7 @@ module Fusuma
             end
 
             it 'should generate hold index' do
-              key_symbol = @detector.detect([@buffer]).record.index.keys.map(&:symbol)
+              key_symbol = @detector.detect(@buffers).record.index.keys.map(&:symbol)
               expect(key_symbol).to eq [:hold, 4]
             end
           end

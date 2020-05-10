@@ -47,7 +47,7 @@ module Fusuma
             it 'should NOT clear any events' do
               time = Time.now
               event1 = @event_generator.call(time,       1, 'begin')
-              event2 = @event_generator.call(time + 0.1, 2, 'tap')
+              event2 = @event_generator.call(time + 0.1, 2, 'touch')
               event3 = @event_generator.call(time + 0.2, 1, 'release')
               event4 = @event_generator.call(time + 0.2, 1, 'end')
               @buffer.buffer(event1)
@@ -64,7 +64,7 @@ module Fusuma
             it 'should NOT clear any events' do
               time = Time.now
               event1 = @event_generator.call(time,       1, 'begin')
-              event2 = @event_generator.call(time + 0.1, 2, 'tap')
+              event2 = @event_generator.call(time + 0.1, 2, 'touch')
               event3 = @event_generator.call(time + 0.2, 1, 'release')
               @buffer.buffer(event1)
               @buffer.buffer(event2)
