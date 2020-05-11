@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.3.0](https://github.com/iberianpig/fusuma-plugin-tap/tree/v0.3.0) (2020-05-10)
+
+[Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.2.0...v0.3.0)
+
+**Closed issues:**
+
+- 4 finger tap / hold is not being registered [\#1](https://github.com/iberianpig/fusuma-plugin-tap/issues/1)
+
 ## [v0.2.0](https://github.com/iberianpig/fusuma-plugin-tap/tree/v0.2.0) (2020-05-05)
 
 [Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.1.3...v0.2.0)
