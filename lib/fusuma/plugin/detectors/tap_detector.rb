@@ -21,7 +21,7 @@ module Fusuma
           buffer = buffers.find { |b| b.type == BUFFER_TYPE }
           gesture_buffer = buffers.find { |b| b.type == 'gesture' }
 
-          return if buffer.empty? || !gesture_buffer.empty? || moved?(buffer)
+          return if buffer.empty? || moved?(tap_buffer: buffer, gesture_buffer: gesture_buffer)
 
           holding_time = buffer.events.last.time - buffer.events.first.time
 
@@ -71,8 +71,10 @@ module Fusuma
         end
 
         # @return [TrueClass, FalseClass]
-        def moved?(buffer)
-          buffer.events.any? { |e| e.record.status == 'move' }
+        def moved?(tap_buffer:, gesture_buffer:)
+          tap_buffer.events.any? { |e| e.record.status == 'move' } ||
+            # FIXME: Find good parameter for ignoring
+            gesture_buffer.events.count { |e| tap_buffer.events.first.time < e.time } > 5
         end
 
         # @return [TrueClass, FalseClass]

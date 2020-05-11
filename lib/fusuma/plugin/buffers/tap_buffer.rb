@@ -22,7 +22,7 @@ module Fusuma
         # @param event [Event]
         # @return [NilClass, TapBuffer]
         def buffer(event)
-          return unless (event&.tag == source) || (event&.tag == 'libinput_gesture_parser')
+          return unless event&.tag == source
 
           # NOTE: need to set `begin` event at first of buffer
           clear && return unless bufferable?(event)
@@ -51,12 +51,6 @@ module Fusuma
               false
             end
           when 'keep', 'touch', 'hold', 'release', 'move'
-            if empty?
-              false
-            else
-              true
-            end
-          when 'update' # libinput_gesture_parser
             if empty?
               false
             else
