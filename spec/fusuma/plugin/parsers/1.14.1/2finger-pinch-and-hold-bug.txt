@@ -1,0 +1,32 @@
+event12 - button state: touch 4 from BUTTON_STATE_NONE    event BUTTON_EVENT_IN_AREA     to BUTTON_STATE_AREA   
+event12 - tap: touch 4 state TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH
+event12 - button state: touch 1 from BUTTON_STATE_NONE    event BUTTON_EVENT_IN_AREA     to BUTTON_STATE_AREA   
+event12 - tap: touch 1 state TAP_STATE_TOUCH → TAP_EVENT_TOUCH → TAP_STATE_TOUCH_2
+event12 - tap: touch 1 state TAP_STATE_TOUCH_2 → TAP_EVENT_MOTION → TAP_STATE_TOUCH_2_HOLD
+event12 - gesture state: GESTURE_STATE_NONE → GESTURE_STATE_UNKNOWN
+event12 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_SCROLL
+ event12  POINTER_AXIS      +5.17s	vert 0.00/0 horiz 3.42/0* (finger)
+ event12  POINTER_AXIS      +5.17s	vert 0.00/0 horiz 2.93/0* (finger)
+ event12  POINTER_AXIS      +5.18s	vert 0.00/0 horiz 2.93/0* (finger)
+ event12  POINTER_AXIS      +5.19s	vert 0.00/0 horiz 2.44/0* (finger)
+ event12  POINTER_AXIS      +5.20s	vert 0.00/0 horiz 2.93/0* (finger)
+ event12  POINTER_AXIS      +5.20s	vert 0.00/0 horiz 2.44/0* (finger)
+ event12  POINTER_AXIS      +5.21s	vert 0.00/0 horiz 2.44/0* (finger)
+ event12  POINTER_AXIS      +5.22s	vert 0.00/0 horiz 1.95/0* (finger)
+ event12  POINTER_AXIS      +5.22s	vert 0.00/0 horiz 1.46/0* (finger)
+ event12  POINTER_AXIS      +5.23s	vert 0.00/0 horiz 1.46/0* (finger)
+ event12  POINTER_AXIS      +5.24s	vert 0.00/0 horiz 0.98/0* (finger)
+ event12  POINTER_AXIS      +5.25s	vert 0.00/0 horiz 0.98/0* (finger)
+ event12  POINTER_AXIS      +5.25s	vert 0.00/0 horiz 0.49/0* (finger)
+ event12  POINTER_AXIS      +5.26s	vert 0.00/0 horiz 0.49/0* (finger)
+ event12  POINTER_AXIS      +5.27s	vert 0.00/0 horiz 0.49/0* (finger)
+ event12  POINTER_AXIS      +5.27s	vert 0.00/0 horiz 0.49/0* (finger)
+ event12  POINTER_AXIS      +5.28s	vert 0.00/0 horiz 0.49/0* (finger)
+ event12  POINTER_AXIS      +5.29s	vert 0.00/0 horiz 0.49/0* (finger)
+ event12  POINTER_AXIS      +5.29s	vert 0.00/0 horiz 0.49/0* (finger)
+ event12  POINTER_AXIS      +5.30s	vert 0.00/0 horiz 0.49/0* (finger)
+event12 - button state: touch 4 from BUTTON_STATE_AREA    event BUTTON_EVENT_UP          to BUTTON_STATE_NONE   
+event12 - tap: touch 4 state TAP_STATE_TOUCH_2_HOLD → TAP_EVENT_RELEASE → TAP_STATE_HOLD
+event12 - button state: touch 1 from BUTTON_STATE_AREA    event BUTTON_EVENT_UP          to BUTTON_STATE_NONE   
+event12 - tap: touch 1 state TAP_STATE_HOLD → TAP_EVENT_RELEASE → TAP_STATE_IDLE
+ event12  POINTER_AXIS      +6.80s	vert 0.00/0* horiz 0.00/0* (finger)
