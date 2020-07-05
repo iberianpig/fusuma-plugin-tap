@@ -176,6 +176,18 @@ module Fusuma
               expect(@record.status).to eq 'keep'
             end
           end
+
+          context 'with 2 finger pinch and hold' do
+            before do
+              @records = File.readlines("#{@debug_log_version_dir}/2finger-pinch-and-hold-bug.txt").map do |line|
+                @parser.parse_record(line)
+              end.compact
+            end
+            it 'should not generate 4 finger tap (bug)' do
+              expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).not_to eq 4
+            end
+          end
         end
       end
     end

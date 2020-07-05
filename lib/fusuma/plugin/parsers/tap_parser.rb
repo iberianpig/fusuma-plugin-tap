@@ -67,7 +67,11 @@ module Fusuma
 
             finger = case Regexp.last_match(2)
                      when 'TAP_STATE_DEAD'
-                       4
+                       if Regexp.last_match(1) == 'TAP_STATE_TOUCH_3'
+                         4
+                       else
+                         0
+                       end
                      when 'TAP_STATE_TOUCH_3'
                        3
                      when 'TAP_STATE_TOUCH_2'

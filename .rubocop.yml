@@ -18,6 +18,11 @@ Metrics/MethodLength:
     - 'lib/fusuma/plugin/parsers/tap_parser.rb'
     - 'lib/fusuma/plugin/parsers/tap_detector.rb'
 
+Metrics/ClassLength:
+  Exclude:
+    - 'lib/fusuma/plugin/parsers/tap_parser.rb'
+    - 'lib/fusuma/plugin/parsers/tap_detector.rb'
+
 Layout/LineLength:
   Max: 100
   Exclude:
