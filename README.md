@@ -62,6 +62,10 @@ plugin:
       verbose: true
 ```
 
+## Known issues
+* `libinput debug-events --verbose` outputs is unstable, so it may not work properly with some versions of libinput.
+* **libinput 1.10.4 contains a bug that suddenly stopped detecting taps.**
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
