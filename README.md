@@ -65,6 +65,7 @@ plugin:
 ## Known issues
 * `libinput debug-events --verbose` outputs is unstable, so it may not work properly with some versions of libinput.
 * **libinput 1.10.4 contains a bug that suddenly stopped detecting taps.**
+  * ref: https://github.com/iberianpig/fusuma-plugin-tap/pull/8
 
 ## Development
 
