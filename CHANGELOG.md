@@ -1,5 +1,29 @@
 # Changelog
 
+## [v0.3.2](https://github.com/iberianpig/fusuma-plugin-tap/tree/v0.3.2) (2020-08-13)
+
+[Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.3.1...v0.3.2)
+
+**Fixed bugs:**
+
+- Fix Parser when detecting a false 4 finger tap after a pinch gesture [\#5](https://github.com/iberianpig/fusuma-plugin-tap/pull/5) ([iberianpig](https://github.com/iberianpig))
+
+**Closed issues:**
+
+- tap 4 not registered [\#4](https://github.com/iberianpig/fusuma-plugin-tap/issues/4)
+
+**Merged pull requests:**
+
+- test\(tap\_parser\): reproduce the bug that 4 finger tap after detecting palm [\#8](https://github.com/iberianpig/fusuma-plugin-tap/pull/8) ([iberianpig](https://github.com/iberianpig))
+
+## [v0.3.1](https://github.com/iberianpig/fusuma-plugin-tap/tree/v0.3.1) (2020-05-15)
+
+[Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.3.0...v0.3.1)
+
+**Closed issues:**
+
+- Reduce false positives with Hold gesture [\#2](https://github.com/iberianpig/fusuma-plugin-tap/issues/2)
+
 ## [v0.3.0](https://github.com/iberianpig/fusuma-plugin-tap/tree/v0.3.0) (2020-05-10)
 
 [Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.2.0...v0.3.0)
