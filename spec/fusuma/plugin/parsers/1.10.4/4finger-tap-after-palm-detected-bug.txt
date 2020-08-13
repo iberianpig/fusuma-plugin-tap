@@ -1,0 +1,27 @@
+event18 - thumb state: THUMB_STATE_MAYBE → THUMB_STATE_NO
+event18 - palm: palm detected (tool-palm)
+event18 - button state: from BUTTON_STATE_NONE, event BUTTON_EVENT_IN_AREA to BUTTON_STATE_AREA
+event18 - palm: palm detected (tool-palm)
+event18 - button state: from BUTTON_STATE_AREA, event BUTTON_EVENT_UP to BUTTON_STATE_NONE
+event18 - thumb state: THUMB_STATE_MAYBE → THUMB_STATE_NO
+event18 - button state: from BUTTON_STATE_NONE, event BUTTON_EVENT_IN_AREA to BUTTON_STATE_AREA
+event18 - thumb state: THUMB_STATE_MAYBE → THUMB_STATE_NO
+event18 - thumb state: THUMB_STATE_MAYBE → THUMB_STATE_NO
+event18 - thumb state: THUMB_STATE_MAYBE → THUMB_STATE_NO
+event18 - button state: from BUTTON_STATE_NONE, event BUTTON_EVENT_IN_AREA to BUTTON_STATE_AREA
+event18 - button state: from BUTTON_STATE_NONE, event BUTTON_EVENT_IN_AREA to BUTTON_STATE_AREA
+event18 - button state: from BUTTON_STATE_NONE, event BUTTON_EVENT_IN_AREA to BUTTON_STATE_AREA
+event18 - gesture state: GESTURE_STATE_NONE → GESTURE_STATE_UNKNOWN
+event18 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_UNKNOWN
+event18 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_UNKNOWN
+event18 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_UNKNOWN
+event18 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_UNKNOWN
+event18 - button state: from BUTTON_STATE_AREA, event BUTTON_EVENT_UP to BUTTON_STATE_NONE
+event18 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_UNKNOWN
+event18 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_UNKNOWN
+event18 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_UNKNOWN
+event18 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_UNKNOWN
+event18 - button state: from BUTTON_STATE_AREA, event BUTTON_EVENT_UP to BUTTON_STATE_NONE
+event18 - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_UNKNOWN
+event18 - button state: from BUTTON_STATE_AREA, event BUTTON_EVENT_UP to BUTTON_STATE_NONE
+event18 - button state: from BUTTON_STATE_AREA, event BUTTON_EVENT_UP to BUTTON_STATE_NONE

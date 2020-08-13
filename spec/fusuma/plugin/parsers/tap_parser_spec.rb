@@ -10,9 +10,9 @@ module Fusuma
       RSpec.describe TapParser do
         describe '#parse_record' do
           before do
-            version = ENV.fetch('LIBINPUT_VERSION', '1.14.1')
+            @version = ENV.fetch('LIBINPUT_VERSION', '1.14.1')
 
-            @debug_log_version_dir = "spec/fusuma/plugin/parsers/#{version}"
+            @debug_log_version_dir = "spec/fusuma/plugin/parsers/#{@version}"
             @parser = TapParser.new
           end
           context 'with 1 finger tap' do
@@ -186,6 +186,22 @@ module Fusuma
             it 'should not generate 4 finger tap (bug)' do
               expect(@records.map(&:gesture)).to all(eq 'tap')
               expect(@records.map(&:finger).max).not_to eq 4
+            end
+          end
+
+          context 'with 4 finger tap after palm detected (bug)' do
+            before do
+              @records = File.readlines("#{@debug_log_version_dir}/4finger-tap-after-palm-detected-bug.txt").map do |line|
+                @parser.parse_record(line)
+              end.compact
+            end
+            it 'should generate 4 finger tap (bug)' do
+              # FIXME: Fail only libinput 1.10.4
+              skip if @version == '1.10.4'
+
+              expect(@records.map(&:gesture)).to all(eq 'tap')
+              expect(@records.map(&:finger).max).to eq 4
+              expect(@records.map(&:status)).to be_include 'touch'
             end
           end
         end
