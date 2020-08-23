@@ -166,17 +166,6 @@ module Fusuma
             end
           end
 
-          context 'with timeout' do
-            before do
-              line = 'LIBINPUT TIMEOUT'
-              @record = @parser.parse_record(line)
-            end
-
-            it 'generate keep event' do
-              expect(@record.status).to eq 'keep'
-            end
-          end
-
           context 'with 2 finger pinch and hold' do
             before do
               @records = File.readlines("#{@debug_log_version_dir}/2finger-pinch-and-hold-bug.txt").map do |line|

@@ -98,8 +98,7 @@ module Fusuma
                        1
                      end
           # KEEP
-          when 'LIBINPUT TIMEOUT',   # Timeout Event
-            /\sgesture(| state):\s/  # 1.10.4 prints "gesture state: GESTURE_STATE_.*"
+          when /\sgesture(| state):\s/ # 1.10.4 prints "gesture state: GESTURE_STATE_.*"
             # NOTE: treat the "gesture(| state):" as KEEP
             status = 'keep'
             finger = 0

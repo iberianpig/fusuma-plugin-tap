@@ -18,24 +18,27 @@ module Fusuma
         # @return [Event] if event is detected
         # @return [NilClass] if event is NOT detected
         def detect(buffers)
-          buffer = buffers.find { |b| b.type == BUFFER_TYPE }
+          tap_buffer = buffers.find { |b| b.type == BUFFER_TYPE }
           gesture_buffer = buffers.find { |b| b.type == 'gesture' }
+          timer_buffer = buffers.find { |b| b.type == 'timer' }
 
-          return if buffer.empty? || moved?(tap_buffer: buffer, gesture_buffer: gesture_buffer)
+          if tap_buffer.empty? || moved?(tap_buffer: tap_buffer, gesture_buffer: gesture_buffer)
+            return
+          end
 
-          holding_time = buffer.events.last.time - buffer.events.first.time
+          holding_time = calc_holding_time(tap_buffer: tap_buffer, timer_buffer: timer_buffer)
 
-          direction = if hold?(buffer, holding_time)
+          direction = if hold?(tap_buffer, holding_time)
                         'hold'
-                      elsif tap?(buffer, holding_time)
+                      elsif tap?(tap_buffer, holding_time)
                         'tap'
                       end
 
           return if direction.nil?
 
-          finger = buffer.finger
+          finger = tap_buffer.finger
 
-          buffer.clear
+          tap_buffer.clear # NOTE: Clear after detecting hold
 
           index = create_index(finger: finger, direction: direction)
 
@@ -95,6 +98,16 @@ module Fusuma
           else
             false
           end
+        end
+
+        def calc_holding_time(tap_buffer:, timer_buffer:)
+          last_time = if timer_buffer && !timer_buffer.empty? &&
+                         (tap_buffer.events.last.time < timer_buffer.events.last.time)
+                        timer_buffer.events.last.time
+                      else
+                        tap_buffer.events.last.time
+                      end
+          last_time - tap_buffer.events.first.time
         end
 
         private
