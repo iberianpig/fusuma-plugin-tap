@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.4.0.pre](https://github.com/iberianpig/fusuma-plugin-tap/tree/v0.4.0.pre) (2020-11-09)
+
+[Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.3.2...v0.4.0.pre)
+
 ## [v0.3.2](https://github.com/iberianpig/fusuma-plugin-tap/tree/v0.3.2) (2020-08-13)
 
 [Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.3.1...v0.3.2)
