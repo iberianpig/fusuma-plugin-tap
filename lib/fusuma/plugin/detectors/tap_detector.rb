@@ -7,6 +7,7 @@ module Fusuma
     module Detectors
       # Detect tap event
       class TapDetector < Detector
+        SOURCES = ['tap', 'gesture', 'timer']
         BUFFER_TYPE = 'tap'
         GESTURE_RECORD_TYPE = 'tap'
 
@@ -126,12 +127,12 @@ module Fusuma
         def interval_time(index:, direction:)
           @interval_time ||= {}
           @interval_time[index.cache_key] ||= begin
-                               keys_specific = Config::Index.new [*index.keys, 'interval']
-                               keys_global = Config::Index.new ['interval', direction]
-                               config_value = Config.search(keys_specific) ||
-                                              Config.search(keys_global) || 1
-                               BASE_INTERVAL * config_value
-                             end
+            keys_specific = Config::Index.new [*index.keys, 'interval']
+            keys_global = Config::Index.new ['interval', direction]
+            config_value = Config.search(keys_specific) ||
+                           Config.search(keys_global) || 1
+            BASE_INTERVAL * config_value
+          end
         end
       end
     end

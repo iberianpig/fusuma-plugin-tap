@@ -147,7 +147,7 @@ module Fusuma
           Events::Records::GestureRecord.new(status: status,
                                              gesture: gesture,
                                              finger: finger,
-                                             direction: nil)
+                                             delta: nil)
         end
 
         def tag
