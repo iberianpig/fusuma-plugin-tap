@@ -4,6 +4,7 @@
 require 'fileutils'
 require 'pathname'
 require 'fusuma/device'
+require 'fusuma/plugin/inputs/libinput_command_input'
 
 # Generate libinput generator
 class LibinputDebugEventsGenerator
@@ -40,6 +41,10 @@ class LibinputDebugEventsGenerator
         end
       rescue Timeout::Error
         puts 'cut out device infos'
+      end
+      if `which evemu-play` == ''
+        warn 'evemu-play is not found'
+        exit 1
       end
 
       command = "evemu-play /dev/input/#{device_id} < #{@evemu_record}"
