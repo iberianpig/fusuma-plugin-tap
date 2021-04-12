@@ -11,9 +11,9 @@ class LibinputDebugEventsGenerator
   def initialize(evemu_record:)
     @evemu_record = evemu_record
     @gesture_name = Pathname.new(evemu_record).basename
-    @list_devices = ENV.fetch('LIBINPUT_LIST_DEVICES', 'libinput list-devices')
-    @debug_events = ENV.fetch('LIBINPUT_DEBUG_EVENTS', 'libinput debug-events')
-    @libinput_version = ENV.fetch('LIBINPUT_VERSION', 'libinput list-devices')
+    @list_devices = ENV.fetch('LIBINPUT_LIST_DEVICES')
+    @debug_events = ENV.fetch('LIBINPUT_DEBUG_EVENTS')
+    @libinput_version = ENV.fetch('LIBINPUT_VERSION')
   end
 
   def generate_debug_events
