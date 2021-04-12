@@ -23,7 +23,7 @@ module Fusuma
                 finger: finger,
                 gesture: 'tap',
                 status: status,
-                direction: Events::Records::GestureRecord::Delta.new(0, 0, 0, 0)
+                delta: Events::Records::GestureRecord::Delta.new(0, 0, 0, 0)
               )
             )
           }

@@ -19,7 +19,7 @@ module Fusuma
                                 status: status,
                                 gesture: 'tap',
                                 finger: finger,
-                                direction: nil
+                                delta: nil
                               ))
           }
         end
