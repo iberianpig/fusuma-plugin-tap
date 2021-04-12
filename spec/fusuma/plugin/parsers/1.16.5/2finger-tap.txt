@@ -1,0 +1,10 @@
+event8  - button state: touch 2 from BUTTON_STATE_NONE    event BUTTON_EVENT_IN_AREA     to BUTTON_STATE_AREA   
+event8  - tap: touch 2 (TOUCH_BEGIN), tap state TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH
+event8  - button state: touch 1 from BUTTON_STATE_NONE    event BUTTON_EVENT_IN_AREA     to BUTTON_STATE_AREA   
+event8  - tap: touch 1 (TOUCH_BEGIN), tap state TAP_STATE_TOUCH → TAP_EVENT_TOUCH → TAP_STATE_TOUCH_2
+event8  - button state: touch 1 from BUTTON_STATE_AREA    event BUTTON_EVENT_UP          to BUTTON_STATE_NONE   
+event8  - tap: touch 1 (TOUCH_END), tap state TAP_STATE_TOUCH_2 → TAP_EVENT_RELEASE → TAP_STATE_TOUCH_2_RELEASE
+event8  - button state: touch 2 from BUTTON_STATE_AREA    event BUTTON_EVENT_UP          to BUTTON_STATE_NONE   
+event8  - tap: touch 2 (TOUCH_END), tap state TAP_STATE_TOUCH_2_RELEASE → TAP_EVENT_RELEASE → TAP_STATE_IDLE
+ event8   POINTER_BUTTON   +0.007s	BTN_RIGHT (273) pressed, seat count: 1
+ event8   POINTER_BUTTON   +0.056s	BTN_RIGHT (273) released, seat count: 0

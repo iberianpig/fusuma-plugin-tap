@@ -1,0 +1,48 @@
+event8  - button state: touch 0 from BUTTON_STATE_NONE    event BUTTON_EVENT_IN_AREA     to BUTTON_STATE_AREA   
+event8  - tap: touch 0 (TOUCH_BEGIN), tap state TAP_STATE_IDLE → TAP_EVENT_TOUCH → TAP_STATE_TOUCH
+event8  - button state: touch 1 from BUTTON_STATE_NONE    event BUTTON_EVENT_IN_AREA     to BUTTON_STATE_AREA   
+event8  - tap: touch 1 (TOUCH_BEGIN), tap state TAP_STATE_TOUCH → TAP_EVENT_TOUCH → TAP_STATE_TOUCH_2
+event8  - tap: touch 0 (TOUCH_UPDATE), tap state TAP_STATE_TOUCH_2 → TAP_EVENT_MOTION → TAP_STATE_DEAD
+event8  - gesture state: GESTURE_STATE_NONE → GESTURE_STATE_UNKNOWN
+event8  - gesture state: GESTURE_STATE_UNKNOWN → GESTURE_STATE_PINCH
+ event8   GESTURE_PINCH_BEGIN +0.143s	2
+ event8   GESTURE_PINCH_UPDATE +0.143s	2  0.00/ 0.51 ( 0.00/ 4.92 unaccelerated)  0.97 @ -0.15
+ event8   GESTURE_PINCH_UPDATE +0.150s	2  0.00/ 1.20 ( 0.00/ 4.92 unaccelerated)  0.93 @ -0.16
+ event8   GESTURE_PINCH_UPDATE +0.158s	2 -0.88/ 1.32 (-3.28/ 4.92 unaccelerated)  0.90 @ -0.17
+ event8   GESTURE_PINCH_UPDATE +0.165s	2 -0.88/ 1.32 (-3.28/ 4.92 unaccelerated)  0.87 @ -0.11
+ event8   GESTURE_PINCH_UPDATE +0.172s	2 -0.88/ 1.32 (-3.28/ 4.92 unaccelerated)  0.84 @ -0.12
+ event8   GESTURE_PINCH_UPDATE +0.179s	2 -1.32/ 1.32 (-4.92/ 4.92 unaccelerated)  0.82 @ -0.08
+ event8   GESTURE_PINCH_UPDATE +0.186s	2 -0.44/ 0.88 (-1.64/ 3.28 unaccelerated)  0.79 @  0.05
+ event8   GESTURE_PINCH_UPDATE +0.193s	2 -0.44/ 1.32 (-1.64/ 4.92 unaccelerated)  0.76 @ -0.01
+ event8   GESTURE_PINCH_UPDATE +0.201s	2 -0.44/ 0.88 (-1.64/ 3.28 unaccelerated)  0.74 @ -0.16
+ event8   GESTURE_PINCH_UPDATE +0.208s	2 -0.44/ 0.88 (-1.64/ 3.28 unaccelerated)  0.72 @ -0.08
+ event8   GESTURE_PINCH_UPDATE +0.215s	2 -0.88/ 0.88 (-3.28/ 3.28 unaccelerated)  0.71 @ -0.04
+ event8   GESTURE_PINCH_UPDATE +0.222s	2 -0.88/ 0.88 (-3.28/ 3.28 unaccelerated)  0.69 @ -0.04
+ event8   GESTURE_PINCH_UPDATE +0.229s	2 -0.88/ 0.88 (-3.28/ 3.28 unaccelerated)  0.68 @  0.05
+ event8   GESTURE_PINCH_UPDATE +0.236s	2 -1.32/ 0.88 (-4.92/ 3.28 unaccelerated)  0.66 @  0.00
+ event8   GESTURE_PINCH_UPDATE +0.243s	2 -1.32/ 0.88 (-4.92/ 3.28 unaccelerated)  0.65 @  0.10
+ event8   GESTURE_PINCH_UPDATE +0.251s	2 -1.32/ 0.88 (-4.92/ 3.28 unaccelerated)  0.64 @  0.10
+ event8   GESTURE_PINCH_UPDATE +0.258s	2 -1.32/ 0.88 (-4.92/ 3.28 unaccelerated)  0.63 @  0.11
+ event8   GESTURE_PINCH_UPDATE +0.265s	2 -0.88/ 0.44 (-3.28/ 1.64 unaccelerated)  0.62 @ -0.02
+ event8   GESTURE_PINCH_UPDATE +0.272s	2 -0.88/ 0.44 (-3.28/ 1.64 unaccelerated)  0.61 @ -0.02
+ event8   GESTURE_PINCH_UPDATE +0.279s	2 -0.88/ 0.44 (-3.28/ 1.64 unaccelerated)  0.60 @ -0.02
+ event8   GESTURE_PINCH_UPDATE +0.287s	2 -0.88/ 0.44 (-3.28/ 1.64 unaccelerated)  0.60 @ -0.02
+ event8   GESTURE_PINCH_UPDATE +0.294s	2 -0.88/ 0.44 (-3.28/ 1.64 unaccelerated)  0.59 @ -0.02
+ event8   GESTURE_PINCH_UPDATE +0.301s	2 -0.88/ 0.44 (-3.28/ 1.64 unaccelerated)  0.58 @  0.08
+ event8   GESTURE_PINCH_UPDATE +0.308s	2 -0.88/ 0.44 (-3.28/ 1.64 unaccelerated)  0.58 @  0.09
+ event8   GESTURE_PINCH_UPDATE +0.315s	2 -0.44/ 0.44 (-1.64/ 1.64 unaccelerated)  0.58 @  0.14
+ event8   GESTURE_PINCH_UPDATE +0.322s	2 -0.44/ 0.00 (-1.64/ 0.00 unaccelerated)  0.57 @ -0.05
+ event8   GESTURE_PINCH_UPDATE +0.329s	2 -0.43/ 0.00 (-1.64/ 0.00 unaccelerated)  0.57 @ -0.05
+ event8   GESTURE_PINCH_UPDATE +0.336s	2 -0.43/ 0.00 (-1.64/ 0.00 unaccelerated)  0.57 @ -0.05
+ event8   GESTURE_PINCH_UPDATE +0.344s	2 -0.44/ 0.00 (-1.64/ 0.00 unaccelerated)  0.57 @ -0.05
+ event8   GESTURE_PINCH_UPDATE +0.351s	2 -0.43/ 0.00 (-1.64/ 0.00 unaccelerated)  0.57 @ -0.06
+ event8   GESTURE_PINCH_UPDATE +0.358s	2 -0.43/ 0.00 (-1.64/ 0.00 unaccelerated)  0.56 @ -0.06
+ event8   GESTURE_PINCH_UPDATE +0.365s	2 -0.43/ 0.00 (-1.64/ 0.00 unaccelerated)  0.56 @ -0.06
+ event8   GESTURE_PINCH_UPDATE +0.850s	2  0.29/ 0.00 ( 1.64/ 0.00 unaccelerated)  0.56 @  0.06
+ event8   GESTURE_PINCH_UPDATE +1.763s	2  0.15/ 0.00 ( 1.64/ 0.00 unaccelerated)  0.57 @  0.06
+ event8   GESTURE_PINCH_UPDATE +1.770s	2  0.29/ 0.00 ( 1.64/ 0.00 unaccelerated)  0.57 @  0.06
+ event8   GESTURE_PINCH_UPDATE +1.777s	2  0.43/ 0.00 ( 1.64/ 0.00 unaccelerated)  0.57 @  0.05
+event8  - button state: touch 0 from BUTTON_STATE_AREA    event BUTTON_EVENT_UP          to BUTTON_STATE_NONE   
+event8  - button state: touch 1 from BUTTON_STATE_AREA    event BUTTON_EVENT_UP          to BUTTON_STATE_NONE   
+event8  - tap: touch 1 (TOUCH_END), tap state TAP_STATE_DEAD → TAP_EVENT_RELEASE → TAP_STATE_IDLE
+ event8   GESTURE_PINCH_END +1.797s	2
