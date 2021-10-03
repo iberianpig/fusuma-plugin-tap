@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.2](https://github.com/iberianpig/fusuma-plugin-tap/tree/0.4.2) (2021-10-03)
+
+[Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.4.1...0.4.2)
+
+**Closed issues:**
+
+- How to assign 4 fingers tap to a fusuma-sendkey command? [\#12](https://github.com/iberianpig/fusuma-plugin-tap/issues/12)
+
+## [v0.4.1](https://github.com/iberianpig/fusuma-plugin-tap/tree/v0.4.1) (2021-04-13)
+
+[Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.4.0...v0.4.1)
+
 ## [v0.4.0](https://github.com/iberianpig/fusuma-plugin-tap/tree/v0.4.0) (2021-04-12)
 
 [Full Changelog](https://github.com/iberianpig/fusuma-plugin-tap/compare/v0.4.0.pre2...v0.4.0)
