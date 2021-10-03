@@ -24,14 +24,5 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.3' # https://packages.ubuntu.com/search?keywords=ruby&searchon=names&exact=1&suite=all&section=main
 
-  spec.add_dependency 'fusuma', '~> 2.0.0'
-
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'github_changelog_generator', '~> 1.14'
-  spec.add_development_dependency 'pry-byebug'
-  spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'reek'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'yard'
+  spec.add_dependency 'fusuma', '~> 2.0'
 end
