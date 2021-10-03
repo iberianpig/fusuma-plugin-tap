@@ -18,6 +18,9 @@ list-devices: ## libinput list-devices
 	$(LIBINPUT_REPO)/builddir/$(LIBINPUT_VERSION)/libinput-list-devices
 
 debug-events: ## libinput debug-events
+	$(LIBINPUT_REPO)/builddir/$(LIBINPUT_VERSION)/libinput-debug-events --enable-tap
+
+debug-events--verbose: ## libinput debug-events --verbose
 	$(LIBINPUT_REPO)/builddir/$(LIBINPUT_VERSION)/libinput-debug-events --enable-tap --verbose
 
 help: ## show help

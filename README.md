@@ -73,6 +73,49 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### Testing with multiple version of libinput
+
+See: [Use latest libinput on fusuma · iberianpig/fusuma Wiki](https://github.com/iberianpig/fusuma/wiki/Use-latest-libinput-on-fusuma)
+
+Install direnv to change the version of libinput from environment variables.
+
+```sh
+sudo apt install direnv
+```
+
+create .envrc
+
+```sh
+touch .envrc
+```
+
+modify .envrc
+```sh
+export LIBINPUT_VERSION=1.17.0
+export LIBINPUT_REPO=/path/to/git/repository/of/libinput
+export LIBINPUT_REPO=/path/to/git/repository/of/libinput
+```
+
+Apply changes `.envrc`
+```sh
+$ direnv allow
+```
+
+Build libinput
+```sh
+$ make build
+```
+
+### Change to pre-built version
+* modify `LIBINPUT_VERSION` in `.envrc` 
+* check version with `$ direnv allow && make version`
+
+### Generate stub of libinput-debug-events for RSpec
+
+```sh
+bundle exec bin/libinput_debug_events_generator.rb
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/iberianpig/fusuma-plugin-tap. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
